@@ -12,3 +12,4 @@ COPY Gemfile $APP/Gemfile
 COPY Gemfile.lock $APP/Gemfile.lock
 RUN bundle install
 ADD . $APP
+CMD ["sh", "-c", "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p ${PORT:-3000} -b 0.0.0.0"]
